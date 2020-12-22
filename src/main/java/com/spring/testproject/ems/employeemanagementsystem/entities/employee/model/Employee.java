@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.model.Department;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.model.Project;
+import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -17,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
@@ -61,11 +63,13 @@ public class Employee {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
-    @JoinTable(name = "employee_projects",
+    @JoinTable(name = "employees_projects",
             joinColumns = { @JoinColumn(name = "employee_id") },
             inverseJoinColumns = { @JoinColumn(name = "project_id") })
     private Set<Project> projects = new HashSet<>();
 
+    @OneToMany(mappedBy = "assignedTo")
+    private List<Task> tasks;
 
 //    @ManyToMany
 //    @Column(name = "project_id")

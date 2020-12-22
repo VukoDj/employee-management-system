@@ -1,11 +1,11 @@
 package com.spring.testproject.ems.employeemanagementsystem.entities.employee.mapper;
 
-import com.spring.testproject.ems.employeemanagementsystem.entities.department.mapper.DepartmentMapper;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.dto.EmployeeDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
-import com.spring.testproject.ems.employeemanagementsystem.entities.project.mapper.ProjectMapper;
+import com.spring.testproject.ems.employeemanagementsystem.entities.project.model.Project;
+import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 
-import java.util.stream.Collectors;
+import java.util.*;
 
 
 public class EmployeeMapper {
@@ -23,17 +23,20 @@ public class EmployeeMapper {
                 .setPhoneNumber(employee.getPhoneNumber());
 
         if (employee.getDepartment() != null) {
-            employeeDto.setDepartment(DepartmentMapper.toDepartmentDto(employee.getDepartment()));
+            employeeDto.setDepartmentName(employee.getDepartment().getDepartmentName());
         }
-        if (employee.getProjects() != null) {
-            employeeDto.setProjects(
-                    employee.getProjects()
-                    .stream()
-                    .map(ProjectMapper::toProjectDto)
-                    .collect(Collectors.toSet())
-            );
+        Set<String> projectsAssigned = new HashSet<>();
+        Set<Project> projects = employee.getProjects();
+        if (projects != null) {
+            projects.forEach(project -> projectsAssigned.add(project.getProjectName()));
+            employeeDto.setProjects(projectsAssigned);
         }
-
+        List<String> tasksAssigned = new ArrayList<>();
+        List<Task> tasks = employee.getTasks();
+        if (tasks != null) {
+            tasks.forEach(task -> tasksAssigned.add(task.getTaskName()));
+            employeeDto.setTasks(tasksAssigned);
+        }
         return employeeDto;
     }
 }

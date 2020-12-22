@@ -2,6 +2,7 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.project.mod
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
+import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "project")
+@Table(name = "projects")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
 
@@ -39,4 +40,7 @@ public class Project {
             },
             mappedBy = "projects")
     private Set<Employee> employees = new HashSet<>();
+
+    @OneToMany(mappedBy = "project")
+    private List<Task> tasks;
 }

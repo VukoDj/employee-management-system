@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 
@@ -33,11 +34,12 @@ public class EmployeeDto {
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date hireDate;
     private String jobTitle;
-    private DepartmentDto department;
+    private String departmentName;
     private Integer departmentId;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date createdAt;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date modifiedAt;
-    private Set<ProjectDto> projects;
+    private Set<String> projects;
+    private List<String> tasks;
 }
