@@ -63,20 +63,19 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public EmployeeDto getEmployeeById(Integer id){
-        Optional<Employee> employee = employeeRepository.findById(id);
-        return employee.map(EmployeeMapper::toEmployeeDto).orElse(null);
+        return employeeRepository.findById(id).map(EmployeeMapper::toEmployeeDto).orElse(null);
     }
 
     @Override
     public EmployeeDto addEmployee(Employee employee) {
-        Employee newEmployee = employeeRepository.save(employee);
-        return EmployeeMapper.toEmployeeDto(employeeRepository.save(newEmployee));
+        return EmployeeMapper.toEmployeeDto(employeeRepository.save(employeeRepository.save(employee)));
     }
 
     @Override
     public EmployeeDto updateEmployee(Employee employee, Integer employeeId){
-        Employee old_employee = employeeRepository.findById(employeeId).get();
-        employee.setId(employeeId);
+        if(employeeRepository.findById(employeeId).isPresent()){
+            employee.setId(employeeId);
+        }
         return EmployeeMapper.toEmployeeDto(employeeRepository.save(employee));
     }
 

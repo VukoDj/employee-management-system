@@ -31,8 +31,8 @@ public class EmployeeMapper {
             projects.forEach(project -> projectsAssigned.add(project.getProjectName()));
             employeeDto.setProjects(projectsAssigned);
         }
-        List<String> tasksAssigned = new ArrayList<>();
-        List<Task> tasks = employee.getTasks();
+        Set<String> tasksAssigned = new HashSet<>();
+        Set<Task> tasks = employee.getTasks();
         if (tasks != null) {
             tasks.forEach(task -> tasksAssigned.add(task.getTaskName()));
             employeeDto.setTasks(tasksAssigned);

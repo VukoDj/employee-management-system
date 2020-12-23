@@ -9,6 +9,8 @@ public interface TaskService {
 
     TaskDto addTask(Task task);
     List<TaskDto> getAllTasks();
-    TaskDto getTaskById();
-    TaskDto updateTask();
+    TaskDto getTaskById(Integer taskId);
+    TaskDto updateTask(Task task, Integer taskId);
+    TaskDto assignTaskToEmployee(Integer taskId, Integer employeeId);
+
 }

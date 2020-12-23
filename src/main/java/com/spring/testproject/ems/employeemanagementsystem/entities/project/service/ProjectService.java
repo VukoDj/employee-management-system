@@ -10,5 +10,5 @@ public interface ProjectService {
     ProjectDto addProject(Project project);
     List<ProjectDto> getAllProjects(String searchExpression);
     ProjectDto getProjectById(Integer projectId);
-    ProjectDto updateDepartment(Project project, Integer projectId);
+    ProjectDto updateProject(Project project, Integer projectId);
 }

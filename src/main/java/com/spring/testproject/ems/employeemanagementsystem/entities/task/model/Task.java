@@ -35,7 +35,8 @@ public class Task {
     @JoinColumn(name = "employee_id")
     private Employee assignedTo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade=CascadeType.ALL)
     @JoinColumn(name = "project_id")
     @NotNull
     private Project project;

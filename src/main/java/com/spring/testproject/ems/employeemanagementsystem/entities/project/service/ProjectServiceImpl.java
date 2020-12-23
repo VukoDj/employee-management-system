@@ -47,11 +47,13 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public ProjectDto getProjectById(Integer projectId) {
         Optional<Project> project = projectRepository.findById(projectId);
-        return project.map(ProjectMapper::toProjectDto).orElse(null);    }
+        return project.map(ProjectMapper::toProjectDto).orElse(null);
+    }
 
     @Override
-    public ProjectDto updateDepartment(Project project, Integer projectId) {
-        Project old_project = projectRepository.findById(projectId).get();
-        project.setId(projectId);
+    public ProjectDto updateProject(Project project, Integer projectId) {
+        if(projectRepository.findById(projectId).isPresent()){
+            project.setId(projectId);
+        }
         return ProjectMapper.toProjectDto(projectRepository.save(project));    }
 }

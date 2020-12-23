@@ -31,7 +31,7 @@ public class ProjectController {
 
     @PutMapping("/projects/{projectId}")
     public ProjectDto updateProject(@RequestBody Project project, @PathVariable Integer projectId) {
-        return projectService.updateDepartment(project, projectId);
+        return projectService.updateProject(project, projectId);
     }
 
 }

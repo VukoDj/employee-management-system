@@ -69,7 +69,7 @@ public class Employee {
     private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "assignedTo")
-    private List<Task> tasks;
+    private Set<Task> tasks = new HashSet<>();
 
 //    @ManyToMany
 //    @Column(name = "project_id")

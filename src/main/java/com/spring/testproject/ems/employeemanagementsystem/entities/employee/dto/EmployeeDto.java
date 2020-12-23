@@ -35,11 +35,10 @@ public class EmployeeDto {
     private Date hireDate;
     private String jobTitle;
     private String departmentName;
-    private Integer departmentId;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date createdAt;
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Date modifiedAt;
     private Set<String> projects;
-    private List<String> tasks;
+    private Set<String> tasks;
 }

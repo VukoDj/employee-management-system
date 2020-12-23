@@ -5,15 +5,17 @@ import com.spring.testproject.ems.employeemanagementsystem.entities.task.dto.Tas
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 
 public class TaskMapper {
-    public TaskDto toTaskDto(Task task){
+
+    public static TaskDto toTaskDto(Task task){
         TaskDto taskDto = new TaskDto()
                 .setTaskId(task.getId())
                 .setTaskName(task.getTaskName())
                 .setProjectName(task.getProject().getProjectName())
                 .setPriority(task.getPriority());
-        if (task.getPriority() != null){
+        if (task.getAssignedTo() != null){
             taskDto.setEmployeeFullName(task.getAssignedTo().getFirstName() + " " + task.getAssignedTo().getLastName());
         }
+
     return taskDto;
     }
 }
