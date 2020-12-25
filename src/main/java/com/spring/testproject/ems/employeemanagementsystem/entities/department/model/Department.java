@@ -1,13 +1,11 @@
 package com.spring.testproject.ems.employeemanagementsystem.entities.department.model;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
 import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Getter

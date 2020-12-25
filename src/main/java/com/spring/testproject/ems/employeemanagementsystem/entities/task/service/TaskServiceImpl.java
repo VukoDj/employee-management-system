@@ -49,7 +49,7 @@ public class TaskServiceImpl implements TaskService{
     public TaskDto updateTask(Task task, Integer taskId) {
         if(taskRepository.findById(taskId).isPresent()){
             task.setId(taskId);
-        };
+        }
 
         return TaskMapper.toTaskDto(taskRepository.save(task));
     }
@@ -60,5 +60,18 @@ public class TaskServiceImpl implements TaskService{
         Employee employee = employeeRepository.findById(employeeId).get();
         task.setAssignedTo(employee);
         return TaskMapper.toTaskDto(taskRepository.save(task));
+    }
+
+    @Override
+    public List<TaskDto> getAllTasksAssignedToEmployee(Integer employee_id) {
+        List<Task> tasks = taskRepository.getAllTasksAssignedToEmployee(employee_id);
+        if(!tasks.isEmpty()){
+            return tasks
+                    .stream()
+                    .map(TaskMapper::toTaskDto)
+                    .collect(Collectors.toList());
+        }else{
+            return Collections.emptyList();
+        }
     }
 }

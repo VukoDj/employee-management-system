@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
 
-    @Query(value = "select * from department d "
+    @Query(value = "select * from departments d "
             + "where lower(d.department_name) like lower(concat('%', :searchExpression , '%'))", nativeQuery = true)
-    public List<Department> search(@Param("searchExpression") String searchExpression);
+    List<Department> search(@Param("searchExpression") String searchExpression);
 
+    Optional<Department> findByDepartmentName(String departmentName);
 }

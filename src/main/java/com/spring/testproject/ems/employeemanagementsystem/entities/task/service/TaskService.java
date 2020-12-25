@@ -12,5 +12,7 @@ public interface TaskService {
     TaskDto getTaskById(Integer taskId);
     TaskDto updateTask(Task task, Integer taskId);
     TaskDto assignTaskToEmployee(Integer taskId, Integer employeeId);
+    List<TaskDto> getAllTasksAssignedToEmployee(Integer employee_id);
+
 
 }

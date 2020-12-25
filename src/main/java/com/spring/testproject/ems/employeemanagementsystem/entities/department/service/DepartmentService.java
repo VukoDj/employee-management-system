@@ -2,7 +2,6 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.department.
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.dto.DepartmentDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.model.Department;
-
 import java.util.List;
 
 public interface DepartmentService {
@@ -11,4 +10,5 @@ public interface DepartmentService {
     DepartmentDto getDepartmentById(Integer id);
     DepartmentDto addDepartment(Department department);
     DepartmentDto updateDepartment(Department department, Integer departmentId);
-}
+    DepartmentDto getDepartmentByName(String departmentName);
+ }

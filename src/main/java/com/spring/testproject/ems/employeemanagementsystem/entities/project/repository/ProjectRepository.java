@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
-    @Query(value = "select * from project p "
+    @Query(value = "select * from projects p "
             + "where lower(d.project_name) like lower(concat('%', :searchExpression , '%'))", nativeQuery = true)
     public List<Project> search(@Param("searchExpression") String searchExpression);
 }

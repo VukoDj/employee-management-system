@@ -57,6 +57,12 @@ public class DepartmentServiceImp implements DepartmentService {
         return DepartmentMapper.toDepartmentDto(departmentRepository.save(department));
     }
 
+    @Override
+    public DepartmentDto getDepartmentByName(String departmentName) {
+        Department department = departmentRepository.findByDepartmentName(departmentName).orElse(null);
+        return DepartmentMapper.toDepartmentDto(department);
+    }
+
 
     public void deleteDepartment(Integer id){
         departmentRepository.deleteById(id);

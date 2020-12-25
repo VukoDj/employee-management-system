@@ -33,4 +33,9 @@ public class DepartmentController {
     public DepartmentDto updateDepartment(@RequestBody Department department, @PathVariable Integer departmentId){
         return departmentService.updateDepartment(department, departmentId);
     }
+
+    @GetMapping("/kurac/{departmentName}")
+    public DepartmentDto getDepartmentByName(@PathVariable String departmentName){
+        return departmentService.getDepartmentByName(departmentName);
+    }
 }
