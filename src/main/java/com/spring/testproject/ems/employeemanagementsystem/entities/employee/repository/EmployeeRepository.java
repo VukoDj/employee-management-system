@@ -22,8 +22,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
             + "where department_id = :departmentId;", nativeQuery = true)
     public List<Employee> getEmployeesFromDepartment(@Param("departmentId") Integer departmentId);
 
-//    @Query(value = "select * from employees e "
-//            + "where department_id = :departmentId;", nativeQuery = true)
-//    public List<Employee> getEmployeesByProjectId(@Param("projectId") Integer departmentId);
-
 }

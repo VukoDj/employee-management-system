@@ -2,7 +2,6 @@ package com.spring.testproject.ems.employeemanagementsystem.exception;
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.exception.DepartmentNotFoundException;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.exception.EmployeeNotFoundException;
-import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.exception.ProjectNotFoundException;
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.exception.TaskNotFoundException;
 import org.springframework.http.HttpStatus;

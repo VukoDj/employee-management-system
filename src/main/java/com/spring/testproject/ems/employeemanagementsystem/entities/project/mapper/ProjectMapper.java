@@ -3,8 +3,6 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.project.map
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.dto.ProjectDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.model.Project;
 
-import java.util.Collections;
-
 public class ProjectMapper {
     public static ProjectDto toProjectDto(Project project){
         ProjectDto projectDto = new ProjectDto()

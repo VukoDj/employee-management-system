@@ -1,7 +1,5 @@
 package com.spring.testproject.ems.employeemanagementsystem.entities.project.service;
 
-import com.spring.testproject.ems.employeemanagementsystem.entities.department.mapper.DepartmentMapper;
-import com.spring.testproject.ems.employeemanagementsystem.entities.department.model.Department;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.dto.ProjectDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.exception.ProjectNotFoundException;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.mapper.ProjectMapper;

@@ -4,7 +4,6 @@ import com.spring.testproject.ems.employeemanagementsystem.entities.department.s
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.dto.EmployeeDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.service.EmployeeServiceImpl;
-import com.spring.testproject.ems.employeemanagementsystem.entities.project.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

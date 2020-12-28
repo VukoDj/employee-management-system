@@ -37,19 +37,16 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(req, res);
     }
 
-    // Reads the JWT from the Authorization header, and then uses JWT to validate the token
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(SecurityConstants.HEADER_STRING);
 
         if (token != null) {
-            // parse the token.
             String user = JWT.require(Algorithm.HMAC512(SecurityConstants.SECRET.getBytes()))
                     .build()
                     .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
                     .getSubject();
 
             if (user != null) {
-                // new arraylist means authorities
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
             }
 

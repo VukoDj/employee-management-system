@@ -1,12 +1,9 @@
 package com.spring.testproject.ems.employeemanagementsystem;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.testproject.ems.employeemanagementsystem.entities.user.model.UserRole;
-import com.spring.testproject.ems.employeemanagementsystem.entities.user.model.User;
 import com.spring.testproject.ems.employeemanagementsystem.entities.user.repository.UserRepository;
 import com.spring.testproject.ems.employeemanagementsystem.entities.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

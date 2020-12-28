@@ -2,7 +2,6 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.project.ser
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.dto.ProjectDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.project.model.Project;
-import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 
 import java.util.List;
 

@@ -2,8 +2,6 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.department.
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.dto.DepartmentDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.model.Department;
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
 
 public interface DepartmentService {
