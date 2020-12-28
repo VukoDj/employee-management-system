@@ -1,8 +1,10 @@
 package com.spring.testproject.ems.employeemanagementsystem.entities.task.service;
 
+import com.spring.testproject.ems.employeemanagementsystem.entities.employee.exception.EmployeeNotFoundException;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.repository.EmployeeRepository;
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.dto.TaskDto;
+import com.spring.testproject.ems.employeemanagementsystem.entities.task.exception.TaskNotFoundException;
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.mapper.TaskMapper;
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.repository.TaskRepository;
@@ -42,13 +44,15 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public TaskDto getTaskById(Integer taskId) {
-        return taskRepository.findById(taskId).map(TaskMapper::toTaskDto).orElse(null);
+        return taskRepository.findById(taskId).map(TaskMapper::toTaskDto).orElseThrow(() -> new TaskNotFoundException(taskId.toString()));
     }
 
     @Override
     public TaskDto updateTask(Task task, Integer taskId) {
         if(taskRepository.findById(taskId).isPresent()){
             task.setId(taskId);
+        }else{
+            throw new TaskNotFoundException(taskId.toString());
         }
 
         return TaskMapper.toTaskDto(taskRepository.save(task));
@@ -56,8 +60,8 @@ public class TaskServiceImpl implements TaskService{
 
     @Override
     public TaskDto assignTaskToEmployee(Integer taskId, Integer employeeId) {
-        Task task = taskRepository.findById(taskId).get();
-        Employee employee = employeeRepository.findById(employeeId).get();
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new TaskNotFoundException(taskId.toString()) );
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new EmployeeNotFoundException(employeeId.toString()));
         task.setAssignedTo(employee);
         return TaskMapper.toTaskDto(taskRepository.save(task));
     }

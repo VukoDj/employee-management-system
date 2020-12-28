@@ -7,6 +7,7 @@ import com.spring.testproject.ems.employeemanagementsystem.entities.project.mode
 import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
 import com.sun.istack.NotNull;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,11 +20,12 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "employees")
+@Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private Integer id;
 
@@ -63,19 +65,12 @@ public class Employee {
                     CascadeType.MERGE
             })
     @JoinTable(name = "employees_projects",
-            joinColumns = { @JoinColumn(name = "employee_id") },
-            inverseJoinColumns = { @JoinColumn(name = "project_id") })
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")})
     private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "assignedTo")
     private Set<Task> tasks = new HashSet<>();
-
-//    @ManyToMany
-//    @Column(name = "project_id")
-//    @JoinTable(name = "user_role",
-//            joinColumns = {@JoinColumn(name = "employee_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "project_id")})
-//    private Set<Project> projects = new HashSet<>();
 
 }
 

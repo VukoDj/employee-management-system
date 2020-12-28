@@ -6,7 +6,7 @@ import com.spring.testproject.ems.employeemanagementsystem.entities.department.m
 
 public class DepartmentMapper {
 
-    public static DepartmentDto toDepartmentDto(Department department){
+    public static DepartmentDto toDepartmentDto(Department department) {
         return new DepartmentDto(
                 department.getId(),
                 department.getDepartmentName()

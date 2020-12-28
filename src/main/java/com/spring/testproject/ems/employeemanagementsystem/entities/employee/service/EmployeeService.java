@@ -13,5 +13,6 @@ public interface EmployeeService {
     List<EmployeeDto> getEmployeesFromDepartment(Integer departmentId);
     EmployeeDto updateEmployee(Employee employee, Integer employeeId);
     EmployeeDto assignProjectToEmployee(Integer employeeId, Integer projectId);
-//    List<EmployeeDto> getEmployeesByProjectId(Integer projectId);
+    void deleteEmployeeById(Integer employeeId);
+
 }

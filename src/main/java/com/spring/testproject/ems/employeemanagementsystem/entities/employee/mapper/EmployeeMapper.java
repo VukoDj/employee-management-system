@@ -2,10 +2,6 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.employee.ma
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.dto.EmployeeDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.employee.model.Employee;
-import com.spring.testproject.ems.employeemanagementsystem.entities.project.model.Project;
-import com.spring.testproject.ems.employeemanagementsystem.entities.task.model.Task;
-
-import java.util.*;
 
 
 public class EmployeeMapper {
@@ -24,18 +20,6 @@ public class EmployeeMapper {
 
         if (employee.getDepartment() != null) {
             employeeDto.setDepartmentName(employee.getDepartment().getDepartmentName());
-        }
-        Set<String> projectsAssigned = new HashSet<>();
-        Set<Project> projects = employee.getProjects();
-        if (projects != null) {
-            projects.forEach(project -> projectsAssigned.add(project.getProjectName()));
-            employeeDto.setProjects(projectsAssigned);
-        }
-        Set<String> tasksAssigned = new HashSet<>();
-        Set<Task> tasks = employee.getTasks();
-        if (tasks != null) {
-            tasks.forEach(task -> tasksAssigned.add(task.getTaskName()));
-            employeeDto.setTasks(tasksAssigned);
         }
         return employeeDto;
     }

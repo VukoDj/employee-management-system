@@ -2,13 +2,15 @@ package com.spring.testproject.ems.employeemanagementsystem.entities.department.
 
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.dto.DepartmentDto;
 import com.spring.testproject.ems.employeemanagementsystem.entities.department.model.Department;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface DepartmentService {
 
     List<DepartmentDto> getAllDepartments(String searchExpression);
-    DepartmentDto getDepartmentById(Integer id);
+    DepartmentDto getDepartmentById(Integer departmentId);
     DepartmentDto addDepartment(Department department);
     DepartmentDto updateDepartment(Department department, Integer departmentId);
-    DepartmentDto getDepartmentByName(String departmentName);
+    void deleteDepartmentById(Integer departmentId);
  }
